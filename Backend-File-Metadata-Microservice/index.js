@@ -5,7 +5,10 @@ const cors = require("cors");
 const multer = require("multer");
 
 app.use(cors());
-app.use("/public", express.static(__dirname + "/public/"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(express.static(__dirname + "/public/"));
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
